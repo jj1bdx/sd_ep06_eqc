@@ -1,18 +1,15 @@
 -module(msgcounter_eqc).
 
 -include_lib("eqc/include/eqc.hrl").
--include_lib("eqc/include/eqc_fsm.hrl").
+-include_lib("eqc/include/eqc_statem.hrl").
 
 -compile({parse_transform,eqc_cover}).
 -compile(export_all).
 
--record(state, {count}).
+-record(state, {count = 0}).
 
 initial_state() ->
      #state{}.
-
-initial_state_data() ->
-    #state{count = 0}.
 
 %% zero 
 
