@@ -14,47 +14,47 @@ initial_state() ->
 %% zero 
 
 %% {var,pid} stands for the given environment variable "pid" in the tuple
-zero_command(_) ->
-    {call, msgcounter_gen_server, zero, [{var, pid}]}.
+%zero_command(_) ->
+%    {call, msgcounter_gen_server, zero, [{var, pid}]}.
 
-zero_next(S, _, _) ->
-    S#state{count = 0}.
+%zero_next(S, _, _) ->
+%    S#state{count = 0}.
 
-zero_post(_, _, Result) ->
-    eq(Result, ok).
+%zero_post(_, _, Result) ->
+%    eq(Result, ok).
 
 %% inc
 
-inc_command(_) ->
-    {call, msgcounter_gen_server, inc, [{var, pid}]}.
+%inc_command(_) ->
+%    {call, msgcounter_gen_server, inc, [{var, pid}]}.
 
-inc_next(S, _, _) ->
-    S#state{count = S#state.count + 1}.
+%inc_next(S, _, _) ->
+%    S#state{count = S#state.count + 1}.
 
-inc_post(S, _, Result) ->
-    eq(Result, S#state.count + 1).
+%inc_post(S, _, Result) ->
+%    eq(Result, S#state.count + 1).
 
 %% dec
 
-dec_command(_) ->
-    {call, msgcounter_gen_server, dec, [{var, pid}]}.
+%dec_command(_) ->
+%    {call, msgcounter_gen_server, dec, [{var, pid}]}.
 
-dec_next(S, _, _) ->
-    S#state{count = S#state.count - 1}.
+%dec_next(S, _, _) ->
+%    S#state{count = S#state.count - 1}.
 
-dec_post(S, _, Result) ->
-    eq(Result, S#state.count - 1).
+%dec_post(S, _, Result) ->
+%   eq(Result, S#state.count - 1).
 
 %% val 
 
-val_command(_) ->
-    {call, msgcounter_gen_server, val, [{var, pid}]}.
+%val_command(_) ->
+%    {call, msgcounter_gen_server, val, [{var, pid}]}.
 
-val_next(S, _, _) ->
-    S#state{count = S#state.count}.
+%val_next(S, _, _) ->
+%    S#state{count = S#state.count}.
 
-val_post(S, _, Result) ->
-    eq(Result, S#state.count).
+%val_post(S, _, Result) ->
+%    eq(Result, S#state.count).
 
 %% property test
 
