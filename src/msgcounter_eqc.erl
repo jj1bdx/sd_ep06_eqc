@@ -65,7 +65,6 @@ prop_tickets() ->
                 % retrievable as {var, pid} replaced by Pid
                 {H, S, Res} = eqc_fsm:run_commands(?MODULE, Cmds, [{pid, Pid}]),
                 msgcounter_gen_server:stop(Pid),
-                aggregate(zip(state_names(H),command_names(Cmds)),
-                          pretty_commands(?MODULE, Cmds, {H, S, Res},
-                          Res == ok))
+                pretty_commands(?MODULE, Cmds, {H, S, Res},
+                                aggregate(command_names(Cmds), Res == ok))
             end).
