@@ -1,2 +1,2 @@
-{build, "make all"}.
-{test_path, "ebin"}.
+{build, "erl -make"}.
+{test_path, "."}.

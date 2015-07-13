@@ -1,6 +1,8 @@
 %%% カウンタを状態に持つサーバをgen_serverで書いています
 %%% 詳細は第3回のmsgcounter.erlを参照してください
 -module(msgcounter_gen_server).
+%%% Added for QuickCheck-CI
+-compile({parse_transform,eqc_cover}).
 %%% gen_serverビヘイビアを使う旨宣言します
 -behaviour(gen_server).
 %%% gen_serverのためのコールバック関数もexportします
