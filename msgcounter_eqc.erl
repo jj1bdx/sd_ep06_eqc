@@ -70,4 +70,4 @@ prop_msgcounter() ->
                 msgcounter_gen_server:stop(Pid),
                 pretty_commands(?MODULE, Cmds, {H, S, Res},
                                 aggregate(command_names(Cmds), Res == ok))
-                    end).
+            end).
