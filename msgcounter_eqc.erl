@@ -6,10 +6,13 @@
 -compile({parse_transform,eqc_cover}).
 -compile(export_all).
 
--record(state, {count = 0}).
+-record(state, {count}).
 
 initial_state() ->
      #state{}.
+
+initial_state_data() ->
+    #state{count = 0}.
 
 %% zero 
 
@@ -59,12 +62,12 @@ counter_zero_post(_, _, Result) ->
 %% property test
 
 prop_msgcounter() ->
-    ?FORALL(Cmds, eqc_statem:commands(?MODULE),
+    ?FORALL(Cmds, commands(?MODULE),
             begin
                 {ok, Pid} = msgcounter_gen_server:start_link(),
                 % environment info given as {pid, Pid}
                 % retrievable as {var, pid} replaced by Pid
-                {H, S, Res} = eqc_statem:run_commands(?MODULE, Cmds, [{pid, Pid}]),
+                {H, S, Res} = run_commands(?MODULE, Cmds, [{pid, Pid}]),
                 msgcounter_gen_server:stop(Pid),
                 pretty_commands(?MODULE, Cmds, {H, S, Res},
                                 aggregate(command_names(Cmds), Res == ok))
