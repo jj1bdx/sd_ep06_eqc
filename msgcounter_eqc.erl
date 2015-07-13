@@ -58,23 +58,12 @@ val_next(S, _, _) ->
 val_post(S, _, Result) ->
     eq(Result, S#state.count).
 
-%% gen_server dummy test
-
-gen_server_dummy(Pid) ->
-    ok = sys:suspend(Pid),
-    ok = sys:change_code(Pid, msgcounter_gen_server, dummy, dummy),
-    ok = sys:resume(Pid),
-    Pid ! dummy,
-    ok = gen_server:cast(Pid, dummy),
-    ok.
-
 %% property test
 
 prop_msgcounter() ->
     numtests(1000, ?FORALL(Cmds, commands(?MODULE),
             begin
                 {ok, Pid} = msgcounter_gen_server:start_link(),
-                ok = gen_server_dummy(Pid),
                 % environment info given as {pid, Pid}
                 % retrievable as {var, pid} replaced by Pid
                 {H, S, Res} = run_commands(?MODULE, Cmds, [{pid, Pid}]),
