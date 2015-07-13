@@ -61,7 +61,10 @@ val_post(S, _, Result) ->
 %% gen_server dummy test
 
 gen_server_dummy(Pid) ->
-    ok = gen_server:cast(Pid, dummy),
+    S = #state{count = 0},
+    {noreply, S} = msgcounter_gen_server:handle_cast(dummy, S),
+    {noreply, S} = msgcounter_gen_server:handle_info(dummy, S),
+    {ok, S} = msgcounter_gen_server:code_change(dummy, S, dummy),
     ok.
 
 %% property test
