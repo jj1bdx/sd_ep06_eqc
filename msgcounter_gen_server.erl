@@ -7,8 +7,8 @@
 
 -export([start_link/0, init/1,
          inc/1, dec/1, zero/1, val/1, stop/1,
-         handle_call/3, terminate/2,
-         handle_cast/2, handle_info/2, code_change/3]).
+         handle_call/3, terminate/2]).
+% -export([handle_cast/2, handle_info/2, code_change/3]).
 -record(state, {counter = 0}).
 
 -spec start_link() -> {ok, pid()}.
@@ -55,11 +55,11 @@ handle_call(terminate, _From, S) ->
 -spec terminate(normal, #state{}) -> ok.
 terminate(normal, _S) -> ok.
 
--spec handle_cast(term(), #state{}) -> term().
-handle_cast(_Msg, S) -> {noreply, S}.
+%-spec handle_cast(term(), #state{}) -> term().
+%handle_cast(_Msg, S) -> {noreply, S}.
 
--spec handle_info(term(), #state{}) -> term().
-handle_info(_Info, S) -> {noreply, S}.
+%-spec handle_info(term(), #state{}) -> term().
+%handle_info(_Info, S) -> {noreply, S}.
 
--spec code_change(term(), #state{}, term()) -> {ok, #state{}}.
-code_change(_OldVsn, S, _Extra) -> {ok, S}.
+%-spec code_change(term(), #state{}, term()) -> {ok, #state{}}.
+%code_change(_OldVsn, S, _Extra) -> {ok, S}.
