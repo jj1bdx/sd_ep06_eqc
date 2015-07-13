@@ -9,7 +9,7 @@
 -record(state, {count = 0}).
 
 initial_state() ->
-     #state{count = 0}.
+     #state{}.
 
 %% zero 
 
