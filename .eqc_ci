@@ -1,2 +1,2 @@
-{build, "cd ebin; erl -make"}.
+{build, "cd ebin; erl -eval \"make:all([{parse_transform, eqc_cover}])\" -s init stop"}.
 {test_path, "ebin"}.
