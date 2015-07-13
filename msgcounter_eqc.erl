@@ -15,13 +15,13 @@ initial_state() ->
 %% zero 
 
 %% {var,pid} stands for the given environment variable "pid" in the tuple
-counter_zero_command(_) ->
+zero_command(_) ->
     {call, msgcounter_gen_server, zero, [{var, pid}]}.
 
-counter_zero_next(S, _, _) ->
+zero_next(S, _, _) ->
     S#state{count = 0}.
 
-counter_zero_post(S, _, Result) ->
+zero_post(S, _, Result) ->
     eq(S#state.count, 0),
     eq(Result, ok).
 
