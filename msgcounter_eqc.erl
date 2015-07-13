@@ -23,8 +23,7 @@ counter_zero_next(S, _, _) ->
     S#state{count = 0}.
 
 counter_zero_post(_, _, Result) ->
-    true.
-    % eq(Result, ok).
+    eq(Result, ok).
 
 %% inc
 
@@ -57,8 +56,7 @@ val_next(S, _, _) ->
     S#state{count = S#state.count}.
 
 val_post(_S, _, _Result) ->
-    true.
-    % eq(Result, S#state.count).
+    eq(Result, S#state.count).
 
 %% property test
 
