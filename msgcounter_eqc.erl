@@ -1,10 +1,10 @@
 -module(msgcounter_eqc).
--compile({parse_transform,eqc_cover}).
 -compile(export_all).
 
 %%% The sequence of these directives are important!
 %%% do not change!
 -include_lib("eqc/include/eqc.hrl").
+-compile({parse_transform,eqc_cover}).
 -include_lib("eqc/include/eqc_statem.hrl").
 
 -record(state, {count = 0}).
