@@ -1,0 +1,12 @@
+{application, sd_eqc,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { sd_eqc_app, []}},
+  {env, []}
+ ]}.
