@@ -1,5 +1,4 @@
 %% erlang
-{['src/*'], 
+{"src/*", 
  [{parse_transform, eqc_cover},
-  {i, "src"},
   {outdir, "ebin"}]}.

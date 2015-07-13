@@ -1,5 +1,5 @@
 all: eqc-compile
 
 eqc-compile:
-	-mkdir ebin
+	mkdir -p ebin
 	erl -make
