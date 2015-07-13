@@ -9,8 +9,8 @@
 %%% gen_serverのためのコールバック関数もexportします
 -export([start_link/0, init/1,
          inc/1, dec/1, zero/1, val/1, stop/1,
-         handle_call/3, terminate/2,
-         handle_cast/2, handle_info/2, code_change/3]).
+         handle_call/3, terminate/2]).
+         % handle_cast/2, handle_info/2, code_change/3]).
 %%% レコードの中にカウンタの内部状態を入れます
 -record(state, {counter = 0}).
 %%% リンク付きでサーバを起動します
@@ -85,12 +85,12 @@ handle_call(terminate, _From, S) ->
 terminate(normal, _S) -> ok.
 %%% ここから先の関数は本サンプルコードでは明示的には使いません
 %%% handle_cast/2はcast/2で送られた非同期メッセージを処理します
--spec handle_cast(term(), #state{}) -> term().
-handle_cast(_Msg, S) -> {noreply, S}.
+%-spec handle_cast(term(), #state{}) -> term().
+%handle_cast(_Msg, S) -> {noreply, S}.
 %%% handle_info/2はcallやcast以外のメッセージを受けとった時の処理をします
--spec handle_info(term(), #state{}) -> term().
-handle_info(_Info, S) -> {noreply, S}.
+%-spec handle_info(term(), #state{}) -> term().
+%handle_info(_Info, S) -> {noreply, S}.
 %%% code_change/3ではモジュールの動的なアップデートの際に
 %%% サーバの内部状態を更新するかどうかを指定します
--spec code_change(term(), #state{}, term()) -> {ok, #state{}}.
-code_change(_OldVsn, S, _Extra) -> {ok, S}.
+%-spec code_change(term(), #state{}, term()) -> {ok, #state{}}.
+%code_change(_OldVsn, S, _Extra) -> {ok, S}.
