@@ -61,7 +61,7 @@ val_post(_S, _, _Result) ->
 %% property test
 
 prop_msgcounter() ->
-    numtests(1000, ?FORALL(Cmds, commands(?MODULE),
+    ?FORALL(Cmds, commands(?MODULE),
             begin
                 {ok, Pid} = msgcounter_gen_server:start_link(),
                 % environment info given as {pid, Pid}
@@ -70,4 +70,4 @@ prop_msgcounter() ->
                 msgcounter_gen_server:stop(Pid),
                 pretty_commands(?MODULE, Cmds, {H, S, Res},
                                 aggregate(command_names(Cmds), Res == ok))
-                    end)).
+                    end).
