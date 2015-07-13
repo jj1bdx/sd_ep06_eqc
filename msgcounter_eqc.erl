@@ -53,9 +53,8 @@ val_command(_) ->
 
 val_next(S, _, _) ->
     S.
-    %#state{count = S#state.count}.
 
-val_post(_S, _, _Result) ->
+val_post(_S, _, Result) ->
     eq(Result, S#state.count).
 
 %% property test
