@@ -21,7 +21,8 @@ counter_zero_command(_) ->
 counter_zero_next(S, _, _) ->
     S#state{count = 0}.
 
-counter_zero_post(_, _, Result) ->
+counter_zero_post(S, _, Result) ->
+    eq(S#state.count, 0),
     eq(Result, ok).
 
 %% inc
