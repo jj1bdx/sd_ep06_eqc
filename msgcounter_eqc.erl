@@ -58,6 +58,10 @@ val_next(S, _, _) ->
 val_post(S, _, Result) ->
     eq(Result, S#state.count).
 
+%% postcondition
+
+postcondition(_S,_Cmd,_Result) -> true.
+
 %% property test
 
 prop_msgcounter() ->
