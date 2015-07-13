@@ -58,7 +58,7 @@ initial_state() ->
 
 %% property test
 
-prop_tickets() ->
+prop_msgcounter() ->
     ?FORALL(Cmds, commands(?MODULE),
             begin
                 {ok, Pid} = msgcounter_gen_server:start_link(),

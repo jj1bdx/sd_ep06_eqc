@@ -3,6 +3,7 @@
 -module(msgcounter_gen_server).
 %%% Added for QuickCheck-CI
 -compile({parse_transform,eqc_cover}).
+-compile(export_all).
 %%% gen_serverビヘイビアを使う旨宣言します
 -behaviour(gen_server).
 %%% gen_serverのためのコールバック関数もexportします
