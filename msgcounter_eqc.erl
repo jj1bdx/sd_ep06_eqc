@@ -52,7 +52,8 @@ val_command(_) ->
     {call, msgcounter_gen_server, val, [{var, pid}]}.
 
 val_next(S, _, _) ->
-    S#state{count = S#state.count}.
+    S.
+    %#state{count = S#state.count}.
 
 val_post(_S, _, _Result) ->
     eq(Result, S#state.count).
